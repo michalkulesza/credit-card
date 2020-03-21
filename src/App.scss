@@ -1,0 +1,25 @@
+* {
+  box-sizing: border-box;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Open Sans", sans-serif;
+  line-height: 1.4;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.App {
+  min-height: 100%;
+  width: 100%;
+  background-color: #dddfe6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

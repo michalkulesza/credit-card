@@ -1,0 +1,91 @@
+.card-wrapper {
+  height: 270px;
+  width: 430px;
+  background-color: rgb(122, 145, 158);
+  margin-bottom: -135px;
+  z-index: 1;
+  border-radius: 15px;
+  padding: 25px 25px;
+  box-shadow: 0 0 5px 5px rgba($color: #000000, $alpha: 0.05);
+  color: white;
+}
+
+.card-row {
+  height: 33.333%;
+  width: 100%;
+  display: flex;
+
+  &.card-row-1 {
+    justify-content: space-between;
+
+    .card-hologram {
+      height: 50px;
+    }
+
+    .card-logo {
+      max-height: 37px;
+    }
+  }
+
+  &.card-row-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card-number {
+      display: flex;
+      height: auto;
+
+      .card-number-char {
+        width: 20px;
+        font-size: 24px;
+        font-weight: 500;
+      }
+    }
+  }
+
+  &.card-row-3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .card-name {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+
+      .card-name-title {
+        height: 1.2em;
+        font-size: 0.8em;
+        font-weight: 600;
+        opacity: 0.6;
+      }
+
+      .card-name-name {
+        height: 1.4em;
+        font-size: 1.1em;
+        font-weight: 600;
+      }
+    }
+
+    .card-expires {
+      display: flex;
+      flex-direction: column;
+      height: auto;
+
+      .card-expires-title {
+        height: 1.2em;
+        font-size: 0.8em;
+        font-weight: 600;
+        opacity: 0.6;
+      }
+
+      .card-expires-date {
+        height: 1.4em;
+        font-size: 1.1em;
+        font-weight: 600;
+        display: flex;
+      }
+    }
+  }
+}
