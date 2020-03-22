@@ -11,7 +11,8 @@ const Form = ({
   month,
   setMonth,
   year,
-  setYear
+  setYear,
+  setCvvActive
 }) => {
   const handleOnChangeCardNumber = e => {
     let cursor = e.target.selectionStart;
@@ -112,7 +113,13 @@ const Form = ({
         </div>
         <div className="card-cvv">
           <label htmlFor="cardCvv">CVV</label>
-          <input type="text" id="cardCvv" className="card-holder-cvv" />
+          <input
+            onFocus={() => setCvvActive(true)}
+            onBlur={() => setCvvActive(false)}
+            type="text"
+            id="cardCvv"
+            className="card-holder-cvv"
+          />
         </div>
       </div>
       <div className="form-row"></div>

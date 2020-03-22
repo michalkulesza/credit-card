@@ -10,6 +10,7 @@ const MainCard = () => {
   const [month, setMonth] = useState(0);
   const [year, setYear] = useState(0);
   const [maxLength, setMaxLength] = useState(null);
+  const [cvvActive, setCvvActive] = useState(false);
 
   const formatCard = cardNumber => {
     const num = cardNumber.toString().replace(/\D/g, "");
@@ -36,7 +37,7 @@ const MainCard = () => {
 
   return (
     <div className="main-card-wrapper">
-      <Card ccNum={ccNum} name={name} month={month} year={year}></Card>
+      <Card ccNum={ccNum} name={name} month={month} year={year} cvvActive={cvvActive}></Card>
       <Form
         formatCard={formatCard}
         setCcNum={setCcNum}
@@ -48,6 +49,7 @@ const MainCard = () => {
         setMonth={setMonth}
         year={year}
         setYear={setYear}
+        setCvvActive={setCvvActive}
       ></Form>
     </div>
   );
