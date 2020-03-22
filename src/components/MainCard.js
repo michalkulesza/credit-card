@@ -5,7 +5,10 @@ import Card from "./Card";
 import Form from "./Form";
 
 const MainCard = () => {
-  const [ccNum, setCcNum] = useState(null);
+  const [ccNum, setCcNum] = useState("");
+  const [name, setName] = useState("");
+  const [month, setMonth] = useState(0);
+  const [year, setYear] = useState(0);
   const [maxLength, setMaxLength] = useState(null);
 
   const formatCard = cardNumber => {
@@ -33,8 +36,19 @@ const MainCard = () => {
 
   return (
     <div className="main-card-wrapper">
-      <Card></Card>
-      <Form formatCard={formatCard} setCcNum={setCcNum} ccNum={ccNum} maxLength={maxLength}></Form>
+      <Card ccNum={ccNum} name={name} month={month} year={year}></Card>
+      <Form
+        formatCard={formatCard}
+        setCcNum={setCcNum}
+        ccNum={ccNum}
+        maxLength={maxLength}
+        name={name}
+        setName={setName}
+        month={month}
+        setMonth={setMonth}
+        year={year}
+        setYear={setYear}
+      ></Form>
     </div>
   );
 };
