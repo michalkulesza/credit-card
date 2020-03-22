@@ -3,17 +3,33 @@ import "./Card.scss";
 
 import Chip from "../res/chip.png";
 import Amex from "../res/amex.png";
+import Visa from "../res/visa.png";
+import Mastercard from "../res/mastercard.png";
 
-const Card = ({ ccNum, name, month, year, cvvActive }) => {
+const Card = ({ ccNum, name, month, year, cvvActive, cvv, maxLength, cardType }) => {
   let cardNum = [];
-  const defCardNum = "0000 0000 0000 0000";
+  const defCardNum = "**** **** **** ****";
+  const amexCardNum = "**** ****** *****";
+  let cardNumPlaceholder = defCardNum;
+  let logo = Amex;
   let defName = "FULL NAME";
 
+  if (cardType === "amex") {
+    cardNumPlaceholder = amexCardNum;
+    logo = Amex;
+  } else if (cardType === "master") {
+    cardNumPlaceholder = defCardNum;
+    logo = Mastercard;
+  } else if (cardType === "visa") {
+    cardNumPlaceholder = defCardNum;
+    logo = Visa;
+  }
+
   if (ccNum.length === 0) {
-    for (let i = 0; i < defCardNum.length; i++) {
+    for (let i = 0; i < cardNumPlaceholder.length; i++) {
       cardNum.push(
         <div className="card-number-char" key={Math.random() * i}>
-          {defCardNum[i]}
+          {cardNumPlaceholder[i]}
         </div>
       );
     }
@@ -22,6 +38,13 @@ const Card = ({ ccNum, name, month, year, cvvActive }) => {
       cardNum.push(
         <div className="card-number-char" key={Math.random() * i}>
           {ccNum[i]}
+        </div>
+      );
+    }
+    for (let j = ccNum.length; j < cardNumPlaceholder.length; j++) {
+      cardNum.push(
+        <div className="card-number-char" key={Math.random() * j}>
+          {cardNumPlaceholder[j]}
         </div>
       );
     }
@@ -35,7 +58,7 @@ const Card = ({ ccNum, name, month, year, cvvActive }) => {
             <img src={Chip} alt="Card's chip" />
           </div>
           <div className="card-logo">
-            <img src={Amex} alt="Card's type logo" />
+            <img src={logo} alt="Card's type logo" />
           </div>
         </div>
         <div className="card-row card-row-2">
@@ -63,7 +86,9 @@ const Card = ({ ccNum, name, month, year, cvvActive }) => {
         <div className="card-row card-row-2">
           <div className="card-back-middle">
             <div className="card-cvv-title">CVV</div>
-            <div className="card-white-stripe"></div>
+            <div className="card-white-stripe">
+              <div className="card-cvv">{cvv}</div>
+            </div>
           </div>
         </div>
         <div className="card-row card-row-5"></div>

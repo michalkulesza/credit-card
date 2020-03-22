@@ -12,7 +12,9 @@ const Form = ({
   setMonth,
   year,
   setYear,
-  setCvvActive
+  setCvvActive,
+  cvv,
+  setCvv
 }) => {
   const handleOnChangeCardNumber = e => {
     let cursor = e.target.selectionStart;
@@ -119,6 +121,9 @@ const Form = ({
             type="text"
             id="cardCvv"
             className="card-holder-cvv"
+            maxLength="4"
+            onChange={e => setCvv(e.target.value.toString().replace(/\D/g, ""))}
+            value={cvv}
           />
         </div>
       </div>

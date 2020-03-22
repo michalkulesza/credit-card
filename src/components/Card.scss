@@ -100,6 +100,16 @@
         border-radius: 5px;
         margin: 0 auto;
         background-color: white;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .card-cvv {
+          color: black;
+          height: 1em;
+          line-height: 1em;
+          margin-right: 12px;
+        }
       }
     }
   }
