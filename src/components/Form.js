@@ -14,12 +14,16 @@ const Form = ({
   setYear,
   setCvvActive,
   cvv,
-  setCvv
+  setCvv,
+  setCursor
 }) => {
+  let years = [];
+
   const handleOnChangeCardNumber = e => {
     let cursor = e.target.selectionStart;
     let lastVal = e.target.value;
     let formattedNum = formatCard(e.target.value);
+
     setCcNum(formattedNum);
 
     if (cursor === lastVal.length) {
@@ -41,13 +45,12 @@ const Form = ({
     e.target.selectionStart = cursor;
     e.target.selectionEnd = cursor;
     e.target.setAttribute("data-lastvalue", formattedNum);
+    setCursor(cursor);
   };
 
   const handleOnChangeName = e => {
-    setName(e.target.value.toUpperCase());
+    setName(e.target.value.toUpperCase().replace(/[^a-zA-Z ]/g, ""));
   };
-
-  let years = [];
 
   for (let i = 0; i < 10; i++) {
     let year = new Date().getFullYear();

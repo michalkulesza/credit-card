@@ -13,6 +13,7 @@ const MainCard = () => {
   const [maxLength, setMaxLength] = useState(19);
   const [cvvActive, setCvvActive] = useState(false);
   const [cardType, setCardType] = useState("visa");
+  const [cursor, setCursor] = useState(0);
 
   const formatCard = cardNumber => {
     const num = cardNumber.toString().replace(/\D/g, "");
@@ -23,7 +24,6 @@ const MainCard = () => {
       formattedNum = num.replace(/(\d{4})/, "$1 ").replace(/(\d{4}) (\d{6})/, "$1 $2 ");
       setMaxLength(17);
       setCardType("amex");
-      console.log("1");
     } else if (/^5[1-5][0-9]{0,14}$/.test(num)) {
       //Master(16)
       formattedNum = num
@@ -32,7 +32,6 @@ const MainCard = () => {
         .replace(/(\d{4}) (\d{4}) (\d{4})/, "$1 $2 $3 ");
       setMaxLength(19);
       setCardType("master");
-      console.log("3");
     } else if (/^\d{0,16}$/.test(num)) {
       //Regular(16)
       formattedNum = num
@@ -41,7 +40,6 @@ const MainCard = () => {
         .replace(/(\d{4}) (\d{4}) (\d{4})/, "$1 $2 $3 ");
       setMaxLength(19);
       setCardType("visa");
-      console.log("2");
     }
     return formattedNum;
   };
@@ -57,6 +55,7 @@ const MainCard = () => {
         cvv={cvv}
         maxLength={maxLength}
         cardType={cardType}
+        cursor={cursor}
       ></Card>
       <Form
         formatCard={formatCard}
@@ -72,6 +71,7 @@ const MainCard = () => {
         setCvvActive={setCvvActive}
         cvv={cvv}
         setCvv={setCvv}
+        setCursor={setCursor}
       ></Form>
     </div>
   );

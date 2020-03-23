@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Card.scss";
 
 import Chip from "../res/chip.png";
 import Amex from "../res/amex.png";
 import Visa from "../res/visa.png";
 import Mastercard from "../res/mastercard.png";
+let lastCursorPosition = 0;
 
-const Card = ({ ccNum, name, month, year, cvvActive, cvv, maxLength, cardType }) => {
-  let cardNum = [];
+const Card = ({ ccNum, name, month, year, cvvActive, cvv, maxLength, cardType, cursor }) => {
+  const [cardNum, setCardNum] = useState([]);
   const defCardNum = "**** **** **** ****";
   const amexCardNum = "**** ****** *****";
   let cardNumPlaceholder = defCardNum;
@@ -25,56 +26,69 @@ const Card = ({ ccNum, name, month, year, cvvActive, cvv, maxLength, cardType })
     logo = Visa;
   }
 
-  if (ccNum.length === 0) {
+  useEffect(() => {
+    let tempCardNum = [];
     for (let i = 0; i < cardNumPlaceholder.length; i++) {
-      cardNum.push(
+      tempCardNum.push(
         <div className="card-number-char" key={Math.random() * i}>
           {cardNumPlaceholder[i]}
         </div>
       );
     }
+
+    setCardNum(tempCardNum);
+  }, [cardNumPlaceholder]);
+
+  if (lastCursorPosition > cursor) {
+    cardNum[lastCursorPosition - 1] = (
+      <div className="card-number-char" key={Math.random() * Math.random()}>
+        {cardNumPlaceholder[lastCursorPosition - 1]}
+      </div>
+    );
+    lastCursorPosition = cursor;
   } else {
-    for (let i = 0; i < ccNum.length; i++) {
-      cardNum.push(
-        <div className="card-number-char" key={Math.random() * i}>
-          {ccNum[i]}
-        </div>
-      );
+    for (let j = 0; j < ccNum.length; j++) {
+      if (cardNum[j].props.children !== ccNum[j]) {
+        cardNum[j] = (
+          <div className="card-number-char" key={Math.random() * j}>
+            {ccNum[j]}
+          </div>
+        );
+      }
     }
-    for (let j = ccNum.length; j < cardNumPlaceholder.length; j++) {
-      cardNum.push(
-        <div className="card-number-char" key={Math.random() * j}>
-          {cardNumPlaceholder[j]}
-        </div>
-      );
-    }
+    lastCursorPosition = cursor;
+    console.log(cardNum);
   }
 
   return (
     <>
       <div className={cvvActive ? "card-wrapper card-front flipped" : "card-wrapper card-front"}>
-        <div className="card-row card-row-1">
-          <div className="card-hologram">
-            <img src={Chip} alt="Card's chip" />
+        <div className="card-overlay">
+          <div className="card-row card-row-1">
+            <div className="card-hologram">
+              <img src={Chip} alt="Card's chip" />
+            </div>
+            <div className="card-logo">
+              <img src={logo} alt="Card's type logo" />
+            </div>
           </div>
-          <div className="card-logo">
-            <img src={logo} alt="Card's type logo" />
+          <div className="card-row card-row-2">
+            <div className="card-number">{cardNum}</div>
           </div>
-        </div>
-        <div className="card-row card-row-2">
-          <div className="card-number">{cardNum}</div>
-        </div>
-        <div className="card-row card-row-3">
-          <div className="card-name">
-            <div className="card-name-title">Card Holder</div>
-            <div className="card-name-name">{name.length === 0 ? defName : name}</div>
-          </div>
-          <div className="card-expires">
-            <div className="card-expires-title">Expires</div>
-            <div className="card-expires-date">
-              <div className="card-expires-date-month">{month === 0 ? "MM" : month}</div>
-              <span>/</span>
-              <div className="card-expires-date-year">{year === 0 ? "YY" : year.substring(2)}</div>
+          <div className="card-row card-row-3">
+            <div className="card-name">
+              <div className="card-name-title">Card Holder</div>
+              <div className="card-name-name">{name.length === 0 ? defName : name}</div>
+            </div>
+            <div className="card-expires">
+              <div className="card-expires-title">Expires</div>
+              <div className="card-expires-date">
+                <div className="card-expires-date-month">{month === 0 ? "MM" : month}</div>
+                <span>/</span>
+                <div className="card-expires-date-year">
+                  {year === 0 ? "YY" : year.substring(2)}
+                </div>
+              </div>
             </div>
           </div>
         </div>
