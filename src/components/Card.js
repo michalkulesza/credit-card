@@ -5,9 +5,10 @@ import Chip from "../res/chip.png";
 import Amex from "../res/amex.png";
 import Visa from "../res/visa.png";
 import Mastercard from "../res/mastercard.png";
+
 let lastCursorPosition = 0;
 
-const Card = ({ ccNum, name, month, year, cvvActive, cvv, maxLength, cardType, cursor }) => {
+const Card = ({ ccNum, name, month, year, cvvActive, cvv, cardType, cursor }) => {
   const [cardNum, setCardNum] = useState([]);
   const defCardNum = "**** **** **** ****";
   const amexCardNum = "**** ****** *****";
@@ -35,7 +36,6 @@ const Card = ({ ccNum, name, month, year, cvvActive, cvv, maxLength, cardType, c
         </div>
       );
     }
-
     setCardNum(tempCardNum);
   }, [cardNumPlaceholder]);
 
@@ -57,7 +57,6 @@ const Card = ({ ccNum, name, month, year, cvvActive, cvv, maxLength, cardType, c
       }
     }
     lastCursorPosition = cursor;
-    console.log(cardNum);
   }
 
   return (

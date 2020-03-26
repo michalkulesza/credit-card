@@ -15,7 +15,8 @@ const Form = ({
   setCvvActive,
   cvv,
   setCvv,
-  setCursor
+  setCursor,
+  cardType
 }) => {
   let years = [];
 
@@ -124,7 +125,7 @@ const Form = ({
             type="text"
             id="cardCvv"
             className="card-holder-cvv"
-            maxLength="4"
+            maxLength={cardType === "amex" ? "4" : "3"}
             onChange={e => setCvv(e.target.value.toString().replace(/\D/g, ""))}
             value={cvv}
           />

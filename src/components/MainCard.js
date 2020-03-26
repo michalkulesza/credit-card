@@ -19,21 +19,18 @@ const MainCard = () => {
     const num = cardNumber.toString().replace(/\D/g, "");
     let formattedNum;
 
-    //Amex(15)
     if (/^3[47]\d{0,13}$/.test(num)) {
       formattedNum = num.replace(/(\d{4})/, "$1 ").replace(/(\d{4}) (\d{6})/, "$1 $2 ");
       setMaxLength(17);
       setCardType("amex");
     } else if (/^5[1-5][0-9]{0,14}$/.test(num)) {
-      //Master(16)
       formattedNum = num
         .replace(/(\d{4})/, "$1 ")
         .replace(/(\d{4}) (\d{4})/, "$1 $2 ")
         .replace(/(\d{4}) (\d{4}) (\d{4})/, "$1 $2 $3 ");
       setMaxLength(19);
       setCardType("master");
-    } else if (/^\d{0,16}$/.test(num)) {
-      //Regular(16)
+    } else {
       formattedNum = num
         .replace(/(\d{4})/, "$1 ")
         .replace(/(\d{4}) (\d{4})/, "$1 $2 ")
@@ -53,7 +50,6 @@ const MainCard = () => {
         year={year}
         cvvActive={cvvActive}
         cvv={cvv}
-        maxLength={maxLength}
         cardType={cardType}
         cursor={cursor}
       ></Card>
@@ -72,6 +68,7 @@ const MainCard = () => {
         cvv={cvv}
         setCvv={setCvv}
         setCursor={setCursor}
+        cardType={cardType}
       ></Form>
     </div>
   );
