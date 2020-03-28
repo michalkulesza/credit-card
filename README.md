@@ -1,14 +1,15 @@
 <h1 align="center">Credit Card React Component</h1>
-<h5 align="center">A Credit Card form component for React. <br>It is my take with React on a <a href="https://github.com/muhammederdem/vue-interactive-paycard">muhammederdem's Vue Interactive Paycard</a> that follows the same design and functionality as the original.</h5>
+<h4 align="center">A Credit Card form component for React. <br>It is my take with React on a <a href="https://github.com/muhammederdem/vue-interactive-paycard">muhammederdem's Vue Interactive Paycard</a> that follows the same design and functionality as the original.</h4>
   <br>
   <p align="center">
-    <img src="https://forthebadge.com/images/badges/uses-badges.svg" alt="For the badge">
+    [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
   </p>
+  
 
 ---
 
 <p align="center">
-<img align="center" src="https://github.com/michalkulesza/readme-resources/blob/master/card-preview.gif" alt="covid-19" />
+<img align="center" src="https://github.com/michalkulesza/credit-card/blob/master/preview.gif" alt="covid-19" />
   </p>
 
 ## Installation
