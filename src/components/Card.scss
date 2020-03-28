@@ -172,60 +172,15 @@
   }
 }
 
-.slide-fade-up-enter {
-  transform: translateY(15px);
-  pointer-events: none;
-  opacity: 0;
-}
-
-.slide-fade-up-enter-active {
-  transition: all 0.25s ease-in-out;
-  transition-delay: 0.25s;
-  transform: translateY(0px);
-  position: relative;
-  opacity: 1;
-}
-
-.slide-fade-up-enter-done {
-  opacity: 1;
-}
-
-// @keyframes fade-down {
-//   from {
-//     transform: translateY(-30px);
-//     opacity: 0;
-//   }
-//   to {
-//     transform: translateY(0px);
-//     opacity: 1;
-//   }
-// }
-
-// @keyframes fade-right {
-//   from {
-//     transform: translateX(-30px);
-//     opacity: 0;
-//   }
-//   to {
-//     transform: translateX(0px);
-//     opacity: 1;
-//   }
-// }
-
-//Characters
-.item-enter {
-  transform: translateY(-20px);
-}
-.item-enter-active {
-  transition: all 500ms ease-in;
-  transform: translateY(0px);
-}
-
-.item-exit-active {
-  transition: all 500ms ease-in;
-  transform: translateY(20px);
-}
-.item-exit {
+@keyframes fade-down {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px);
+    opacity: 1;
+  }
 }
 
 //Logo
