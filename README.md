@@ -2,8 +2,9 @@
 <h4 align="center">A Credit Card form component for React. <br>It is my take with React on a <a href="https://github.com/muhammederdem/vue-interactive-paycard">muhammederdem's Vue Interactive Paycard</a> that follows the same design and functionality as the original.</h4>
   <br>
   <p align="center">
-    <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" alt="For the badge">
+    [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
   </p>
+  
 
 ---
 
