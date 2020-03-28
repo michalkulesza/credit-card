@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import uuid from "react-uuid";
 import "./Card.scss";
 
@@ -7,8 +8,8 @@ import Amex from "../res/amex.png";
 import Visa from "../res/visa.png";
 import Mastercard from "../res/mastercard.png";
 
+let logo;
 let lastCursorPosition = 0;
-let logo = <img src={Visa} alt="Card's type logo" key={uuid()} />;
 const defCardNum = "**** **** **** ****";
 const amexCardNum = "**** ****** *****";
 let cardNumPlaceholder = defCardNum;
@@ -20,13 +21,25 @@ const Card = ({ ccNum, name, month, year, cvvActive, cvv, cardType, cursor }) =>
   useEffect(() => {
     if (cardType === "amex") {
       cardNumPlaceholder = amexCardNum;
-      logo = <img src={Amex} alt="Card's type logo" key={uuid()} />;
+      logo = (
+        <CSSTransition timeout={350} classNames="logo" key={uuid()}>
+          <img src={Amex} alt="Card's type logo" />
+        </CSSTransition>
+      );
     } else if (cardType === "master") {
       cardNumPlaceholder = defCardNum;
-      logo = <img src={Mastercard} alt="Card's type logo" key={uuid()} />;
+      logo = (
+        <CSSTransition timeout={350} classNames="logo" key={uuid()}>
+          <img src={Mastercard} alt="Card's type logo" />
+        </CSSTransition>
+      );
     } else if (cardType === "visa") {
       cardNumPlaceholder = defCardNum;
-      logo = <img src={Visa} alt="Card's type logo" key={uuid()} />;
+      logo = (
+        <CSSTransition timeout={350} classNames="logo" key={uuid()}>
+          <img src={Visa} alt="Card's type logo" />
+        </CSSTransition>
+      );
     }
   }, [cardType]);
 
@@ -73,7 +86,7 @@ const Card = ({ ccNum, name, month, year, cvvActive, cvv, cardType, cursor }) =>
             <div className="card-hologram">
               <img src={Chip} alt="Card's chip" />
             </div>
-            <div className="card-logo">{logo}</div>
+            <TransitionGroup className="card-logo">{logo}</TransitionGroup>
           </div>
           <div className="card-row card-row-2">
             <div className="card-number">{cardNum}</div>

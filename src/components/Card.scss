@@ -49,9 +49,14 @@
     }
 
     .card-logo {
-      max-height: 37px;
+      position: relative;
+      width: 150px;
+      max-height: 40px;
 
       img {
+        position: absolute;
+        top: 0;
+        right: 0;
         animation: fade-right 0.25s;
       }
     }
@@ -185,24 +190,59 @@
   opacity: 1;
 }
 
-@keyframes fade-down {
-  from {
-    transform: translateY(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0px);
-    opacity: 1;
-  }
+// @keyframes fade-down {
+//   from {
+//     transform: translateY(-30px);
+//     opacity: 0;
+//   }
+//   to {
+//     transform: translateY(0px);
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes fade-right {
+//   from {
+//     transform: translateX(-30px);
+//     opacity: 0;
+//   }
+//   to {
+//     transform: translateX(0px);
+//     opacity: 1;
+//   }
+// }
+
+//Characters
+.item-enter {
+  transform: translateY(-20px);
+}
+.item-enter-active {
+  transition: all 500ms ease-in;
+  transform: translateY(0px);
 }
 
-@keyframes fade-right {
-  from {
-    transform: translateX(-30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0px);
-    opacity: 1;
-  }
+.item-exit-active {
+  transition: all 500ms ease-in;
+  transform: translateY(20px);
+}
+.item-exit {
+}
+
+//Logo
+.logo-enter {
+  opacity: 0;
+  transform: translateY(-25px);
+}
+.logo-enter-active {
+  opacity: 1;
+  transition: all 350ms ease-in;
+  transform: translateY(0px);
+}
+
+.logo-exit-active {
+  opacity: 0;
+  transition: all 350ms ease-in;
+  transform: translateY(25px);
+}
+.logo-exit {
 }
