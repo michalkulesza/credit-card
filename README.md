@@ -10,6 +10,11 @@
 <img align="center" src="https://github.com/michalkulesza/readme-resources/blob/master/card-preview.gif" alt="covid-19" />
   </p>
 
+<p align="center">
+	<a href="https://www.michalkulesza.me/creditcard/">SEE LIVE VERSION
+	</a>    
+</p>
+
 ## Installation
 
 - `git clone https://github.com/michalkulesza/credit-card` - clone
