@@ -15,7 +15,7 @@ const MainCard = () => {
   const [cardType, setCardType] = useState("visa");
   const [cursor, setCursor] = useState(0);
 
-  const formatCard = cardNumber => {
+  const formatCard = (cardNumber) => {
     const num = cardNumber.toString().replace(/\D/g, "");
     let formattedNum;
 

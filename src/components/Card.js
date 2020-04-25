@@ -94,16 +94,16 @@ const Card = ({ ccNum, name, month, year, cvvActive, cvv, cardType, cursor }) =>
           <div className="card-row card-row-3">
             <div className="card-name">
               <div className="card-name-title">Card Holder</div>
-              <div className="card-name-name">{name.length === 0 ? defName : name}</div>
+              <div className="card-name-name">
+                {name.length === 0 ? defName : name.toUpperCase()}
+              </div>
             </div>
             <div className="card-expires">
               <div className="card-expires-title">Expires</div>
               <div className="card-expires-date">
-                <div className="card-expires-date-month">{month === 0 ? "MM" : month}</div>
+                <div className="card-expires-date-month">{!month ? "MM" : month}</div>
                 <span>/</span>
-                <div className="card-expires-date-year">
-                  {year === 0 ? "YY" : year.substring(2)}
-                </div>
+                <div className="card-expires-date-year">{!year ? "YY" : year.substring(2)}</div>
               </div>
             </div>
           </div>
@@ -125,6 +125,11 @@ const Card = ({ ccNum, name, month, year, cvvActive, cvv, cardType, cursor }) =>
       </div>
     </>
   );
+};
+
+Card.defaultProps = {
+  ccNum: "",
+  name: "",
 };
 
 export default Card;

@@ -16,11 +16,11 @@ const Form = ({
   cvv,
   setCvv,
   setCursor,
-  cardType
+  cardType,
 }) => {
   let years = [];
 
-  const handleOnChangeCardNumber = e => {
+  const handleOnChangeCardNumber = (e) => {
     let cursor = e.target.selectionStart;
     let lastVal = e.target.value;
     let formattedNum = formatCard(e.target.value);
@@ -49,8 +49,8 @@ const Form = ({
     setCursor(cursor);
   };
 
-  const handleOnChangeName = e => {
-    setName(e.target.value.toUpperCase().replace(/[^a-zA-Z ]/g, ""));
+  const handleOnChangeName = (e) => {
+    setName(e.target.value.replace(/[^a-zA-Z ]/g, ""));
   };
 
   for (let i = 0; i < 10; i++) {
@@ -88,7 +88,7 @@ const Form = ({
           <div className="card-expires-selection">
             <select
               value={month !== 0 ? month : "Month"}
-              onChange={e => setMonth(e.target.value)}
+              onChange={(e) => setMonth(e.target.value)}
               id="cardMonth"
               className="card-expires-month"
             >
@@ -108,7 +108,7 @@ const Form = ({
             </select>
             <select
               value={year !== 0 ? year : "Year"}
-              onChange={e => setYear(e.target.value)}
+              onChange={(e) => setYear(e.target.value)}
               id="cardYear"
               className="card-expires-year"
             >
@@ -126,7 +126,7 @@ const Form = ({
             id="cardCvv"
             className="card-holder-cvv"
             maxLength={cardType === "amex" ? "4" : "3"}
-            onChange={e => setCvv(e.target.value.toString().replace(/\D/g, ""))}
+            onChange={(e) => setCvv(e.target.value.toString().replace(/\D/g, ""))}
             value={cvv}
           />
         </div>
@@ -134,6 +134,18 @@ const Form = ({
       <div className="form-row"></div>
     </div>
   );
+};
+
+Form.defaultProps = {
+  formatCard: (val) => val,
+  setCcNum: (val) => val,
+  setName: (val) => val,
+  setMonth: (val) => val,
+  setYear: (val) => val,
+  setCvv: (val) => val,
+  setCvvActive: () => null,
+  maxLength: 19,
+  setCursor: (val) => val,
 };
 
 export default Form;
